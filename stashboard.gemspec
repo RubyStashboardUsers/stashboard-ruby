@@ -6,6 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "stashboard-ruby"
   s.version     = Stashboard::VERSION
   s.platform    = Gem::Platform::RUBY
+  s.date        = '2014-04-29'
   s.authors     = ["Sam Mulube", "Brian Stolz", "Matthew Rayner"]
   s.email       = ["sam@connectedenvironments.com", "brian@tecnobrat.com", "matt@mattrayner.co.uk"]
   s.homepage    = "http://github.com/mattrayner/stashboard-ruby"
