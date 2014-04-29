@@ -24,12 +24,15 @@ Download the latest [Python SDK for Google App Engine](http://code.google.com/ap
 Download and extract the [Stashboard project](http://github.com/twilio/stashboard/tarball/master) to your computer.
 
 ### 3. Run Locally
-Open the SDK, choose 
-    File > Add Existing Application...
+Open the SDK, choose
+```
+File > Add Existing Application...
+```
 
 Navigate to:
-    Propject folder > stashboard
-
+```
+Propject folder > stashboard
+```
 Select open, press Run and navigate to *http://localhost:{port}* to see your Stashboard installation.
 
 ### 4. Deploy to AppSpot
@@ -43,95 +46,107 @@ Select open, press Run and navigate to *http://localhost:{port}* to see your Sta
 
 # Usage
 Into your Gemfile add the line
-    gem "stashboard-ruby"
+```ruby
+gem "stashboard-ruby"
+```
 
 Inside of your project, first create a new Stashboard
-    stashboard = Stashboard::Stashboard.new("https://your-app.appspot.com", "<stashboard_oauth_token>", "<stashboard_oauth_secret>")
+```ruby
+stashboard = Stashboard::Stashboard.new("https://your-app.appspot.com", "<stashboard_oauth_token>", "<stashboard_oauth_secret>")
+```
 
 To receive an array of services:
-    stashboard.services
-    # =>  [
-            {
-              "description"=>"Mail Service", 
-              "url"=>"https://YOURAPP.appspot.com/api/v1/services/mail-service", 
-              "list"=>{
-                "url"=>"https://YOURAPP.appspot.com/api/v1/service-lists/application-services", 
-                "description"=>"The main services that run the application", 
-                "name"=>"Application Services", 
-                "id"=>"application-services"
-              }, 
-              "current-event"=>nil, 
-              "id"=>"mail-service", 
-              "name"=>"Mail Service"
+```ruby
+stashboard.services
+# =>  [
+        {
+          "description"=>"Mail Service", 
+          "url"=>"https://YOURAPP.appspot.com/api/v1/services/mail-service", 
+          "list"=>{
+            "url"=>"https://YOURAPP.appspot.com/api/v1/service-lists/application-services", 
+            "description"=>"The main services that run the application", 
+            "name"=>"Application Services", 
+            "id"=>"application-services"
+          }, 
+          "current-event"=>nil, 
+          "id"=>"mail-service", 
+          "name"=>"Mail Service"
+        }, 
+        {
+          "description"=>"PDF Cleaner", 
+          "url"=>"https://YOURAPP.appspot.com/api/v1/services/pdf-cleaner", 
+          "list"=>{
+            "url"=>"https://YOURAPP.appspot.com/api/v1/service-lists/helper-services", 
+            "description"=>"The little bits that help without being part of the app itself", 
+            "name"=>"Helper Services", "id"=>"helper-services"
+          }, 
+          "current-event"=>nil, 
+          "id"=>"pdf-cleaner", 
+          "name"=>"PDF Cleaner"
+        }, 
+        {
+          "description"=>"Website service",
+          "url"=>"https://YOURAPP.appspot.com/api/v1/services/website", 
+          "current-event"=>{
+            "status"=>{
+              "description"=>"The service is up", 
+              "level"=>"NORMAL", 
+              "default"=>true, 
+              "image"=>"https://YOURAPP.appspot.com/images/icons/iconic/check_alt.png", 
+              "url"=>"https://YOURAPP.appspot.com/api/v1/statuses/up", 
+              "id"=>"up", 
+              "name"=>"Up"
             }, 
-            {
-              "description"=>"PDF Cleaner", 
-              "url"=>"https://YOURAPP.appspot.com/api/v1/services/pdf-cleaner", 
-              "list"=>{
-                "url"=>"https://YOURAPP.appspot.com/api/v1/service-lists/helper-services", 
-                "description"=>"The little bits that help without being part of the app itself", 
-                "name"=>"Helper Services", "id"=>"helper-services"
-              }, 
-              "current-event"=>nil, 
-              "id"=>"pdf-cleaner", 
-              "name"=>"PDF Cleaner"
-            }, 
-            {
-              "description"=>"Website service",
-              "url"=>"https://YOURAPP.appspot.com/api/v1/services/website", 
-              "current-event"=>{
-                "status"=>{
-                  "description"=>"The service is up", 
-                  "level"=>"NORMAL", 
-                  "default"=>true, 
-                  "image"=>"https://YOURAPP.appspot.com/images/icons/iconic/check_alt.png", 
-                  "url"=>"https://YOURAPP.appspot.com/api/v1/statuses/up", 
-                  "id"=>"up", 
-                  "name"=>"Up"
-                }, 
-                "url"=>"https://YOURAPP.appspot.com/api/v1/services/website/events/ag5zfnBsYW5ocS1zdGF0c3ISCxIFRXZlbnQYgICAgN6QwQsM", 
-                "timestamp"=>"Mon, 28 Apr 2014 14:48:16 GMT", 
-                "sid"=>"ag5zfnBsYW5ocS1zdGF0c3ISCxIFRXZlbnQYgICAgN6QwQsM", 
-                "message"=>"Web server running A-OK", 
-                "informational"=>false
-              },
-              "id"=>"website", 
-              "name"=>"Website"
-            }
-          ]
+            "url"=>"https://YOURAPP.appspot.com/api/v1/services/website/events/ag5zfnBsYW5ocS1zdGF0c3ISCxIFRXZlbnQYgICAgN6QwQsM", 
+            "timestamp"=>"Mon, 28 Apr 2014 14:48:16 GMT", 
+            "sid"=>"ag5zfnBsYW5ocS1zdGF0c3ISCxIFRXZlbnQYgICAgN6QwQsM", 
+            "message"=>"Web server running A-OK", 
+            "informational"=>false
+          },
+          "id"=>"website", 
+          "name"=>"Website"
+        }
+      ]
+```
 
 To receive an array of service ids:
-    stashboard.service_ids
-    # =>  ["mail-service", "pdf-cleaner", "website"]
+```ruby
+stashboard.service_ids
+# =>  ["mail-service", "pdf-cleaner", "website"]
+```
 
 To get details of a service based on it's id:
-    stashboard.service("website")
-    # =>  {
-            "description"=>"Website service",
-            "url"=>"https://YOURAPP.appspot.com/api/v1/services/website", 
-            "current-event"=>{
-              "status"=>{
-                "description"=>"The service is up", 
-                "level"=>"NORMAL", 
-                "default"=>true, 
-                "image"=>"https://YOURAPP.appspot.com/images/icons/iconic/check_alt.png", 
-                "url"=>"https://YOURAPP.appspot.com/api/v1/statuses/up", 
-                "id"=>"up", 
-                "name"=>"Up"
-              }, 
-              "url"=>"https://YOURAPP.appspot.com/api/v1/services/website/events/ag5zfnBsYW5ocS1zdGF0c3ISCxIFRXZlbnQYgICAgN6QwQsM", 
-              "timestamp"=>"Mon, 28 Apr 2014 14:48:16 GMT", 
-              "sid"=>"ag5zfnBsYW5ocS1zdGF0c3ISCxIFRXZlbnQYgICAgN6QwQsM", 
-              "message"=>"Web server running A-OK", 
-              "informational"=>false
-            },
-            "id"=>"website", 
-            "name"=>"Website"
-          }
+```ruby
+stashboard.service("website")
+# =>  {
+        "description"=>"Website service",
+        "url"=>"https://YOURAPP.appspot.com/api/v1/services/website", 
+        "current-event"=>{
+          "status"=>{
+            "description"=>"The service is up", 
+            "level"=>"NORMAL", 
+            "default"=>true, 
+            "image"=>"https://YOURAPP.appspot.com/images/icons/iconic/check_alt.png", 
+            "url"=>"https://YOURAPP.appspot.com/api/v1/statuses/up", 
+            "id"=>"up", 
+            "name"=>"Up"
+          }, 
+          "url"=>"https://YOURAPP.appspot.com/api/v1/services/website/events/ag5zfnBsYW5ocS1zdGF0c3ISCxIFRXZlbnQYgICAgN6QwQsM", 
+          "timestamp"=>"Mon, 28 Apr 2014 14:48:16 GMT", 
+          "sid"=>"ag5zfnBsYW5ocS1zdGF0c3ISCxIFRXZlbnQYgICAgN6QwQsM", 
+          "message"=>"Web server running A-OK", 
+          "informational"=>false
+        },
+        "id"=>"website", 
+        "name"=>"Website"
+      }
+```
 
 To generate an event for a service:
-    #                       Service    Status  Message
-    stashboard.create_event("website", "down", "Server unavailable, attempting to restart")
+```ruby
+#                       Service    Status  Message
+stashboard.create_event("website", "down", "Server unavailable, attempting to restart")
+```
 
 # FAQs
 Here are some of the frequesntly asked questions about this project
