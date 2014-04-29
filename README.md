@@ -58,7 +58,7 @@ stashboard = Stashboard::Stashboard.new("https://your-app.appspot.com", "<stashb
 To receive an array of services:
 ```ruby
 stashboard.services
-==begin
+=begin
  =>  [
         {
           "description"=>"Mail Service", 
@@ -108,7 +108,7 @@ stashboard.services
           "name"=>"Website"
         }
       ]
-==end
+=end
 ```
 
 To receive an array of service ids:
@@ -120,7 +120,7 @@ stashboard.service_ids
 To get details of a service based on it's id:
 ```ruby
 stashboard.service("website")
-==begin
+=begin
  =>  {
         "description"=>"Website service",
         "url"=>"https://YOURAPP.appspot.com/api/v1/services/website", 
@@ -143,7 +143,7 @@ stashboard.service("website")
         "id"=>"website", 
         "name"=>"Website"
       }
-==end
+=end
 ```
 
 To generate an event for a service:
