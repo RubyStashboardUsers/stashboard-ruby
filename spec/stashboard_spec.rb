@@ -7,7 +7,6 @@ describe Stashboard::Stashboard do
 
   puts "Resetting statuses..."
   ids.each do |id|
-    puts "  • #{id}"
     stashboard.create_event(id, "up", "Setting #{id} to up for testing purposes.")
   end
 
