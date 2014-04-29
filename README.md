@@ -31,7 +31,7 @@ File > Add Existing Application...
 
 Navigate to:
 ```
-Propject folder > stashboard
+Project folder > stashboard
 ```
 Select open, press Run and navigate to *http://localhost:{port}* to see your Stashboard installation.
 
