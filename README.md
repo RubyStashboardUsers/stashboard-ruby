@@ -1,4 +1,4 @@
-# Updated Stashboard gem [![Gem Version](https://badge.fury.io/rb/stashboard-ruby.svg)](https://rubygems.org/gems/stashboard-ruby) [![Build Status](https://travis-ci.org/mattrayner/stashboard-ruby.svg?branch=master)](https://travis-ci.org/mattrayner/stashboard-ruby)
+# Updated Stashboard gem [![Gem Version](https://badge.fury.io/rb/stashboard-ruby.svg)](https://rubygems.org/gems/stashboard-ruby) [![Build Status](https://travis-ci.org/RubyStashboardUsers/stashboard-ruby.svg?branch=master)](https://travis-ci.org/RubyStashboardUsers/stashboard-ruby)
 
 Simple little ruby library for interacting with a Stashboard instance
 ([http://www.stashboard.org](http://www.stashboard.org).
